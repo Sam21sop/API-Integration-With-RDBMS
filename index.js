@@ -16,12 +16,12 @@ Database.sync().then(() => {
 });
 
 // Use routes
-server.use('/database', transactionRouter);
-server.use('/transactions', transactionRouter);
-server.use('/statistics', statisticsRouter);
-server.use('/bar-chart', barChartRouter);
-server.use('/pie-chart', pieChartRouter);
-server.use('/combined-response', combinedResponseRouter);
+server.use('/api/database', transactionRouter);
+server.use('/api/transactions', transactionRouter);
+server.use('/api/statistics', statisticsRouter);
+server.use('/api/bar-chart', barChartRouter);
+server.use('/api/pie-chart', pieChartRouter);
+server.use('/api/combined-response', combinedResponseRouter);
 
 
 // export server instance
