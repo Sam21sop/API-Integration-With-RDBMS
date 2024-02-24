@@ -4,24 +4,24 @@ import transactionModel from "../models/transactionSchema.js";
 
 // month list array
 const monthsList = ["", 
-    "January", 
-    "February", 
-    "March", 
-    "April", 
-    "May", 
-    "June", 
-    "July", 
-    "August", 
-    "September", 
-    "October", 
-    "November", 
-    "December"
+    "january", 
+    "february", 
+    "march", 
+    "april", 
+    "may", 
+    "june", 
+    "july", 
+    "august", 
+    "september", 
+    "october", 
+    "november", 
+    "december"
 ];
 
 
 // Function to get the month index
 export const getMonthIndex = (month) => {
-    const index = monthsList.indexOf(month);
+    const index = monthsList.indexOf(month.toLowerCase());
   
     if (index !== -1) {
       // Add zero prefix if the index is between 1 and 9

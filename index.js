@@ -23,6 +23,64 @@ server.use('/api/bar-chart', barChartRouter);
 server.use('/api/pie-chart', pieChartRouter);
 server.use('/api/combined-response', combinedResponseRouter);
 
+server.get('/', (req, res)=>{
+  res.send(`<!DOCTYPE html>
+    <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Home</title>
+          <style>
+              body{
+                  margin-top: 5%;
+                  padding: 10px;
+                  align-items: center;
+                  box-sizing: border-box;
+                  display: flex;
+              }
+              .container{
+                  text-align: center;
+                  margin-left: 40%;
+              }
+          </style>
+      </head>
+      <body>
+          <div class="container">
+              <h1>Dashboard</h1>
+              <div>
+                  <button>
+                      <a href="http://localhost:8080/api/transactions?month=December" target="_blank">Get All Transaction</a>
+                  </button>
+              </div>
+              <br>
+              <div>
+                  <button>
+                      <a href="http://localhost:8080/api/statistics?month=March" target="_blank">Get Statistics</a>
+                  </button>
+              </div>
+              <br>
+              <div>
+                  <button>
+                      <a href="http://localhost:8080/api/bar-chart?month=March" target="_blank">Get Bar Chart Data</a>
+                  </button>
+              </div>
+              <br>
+              <div>
+                  <button>
+                      <a href="http://localhost:8080/api/pie-chart?month=March" target="_blank">Get Pie Chart Data</a>
+                  </button>
+              </div>
+              <br>
+              <div>
+                  <button>
+                      <a href="http://localhost:8080/api/combined-response?month=January" target="_blank">Get Combined Response</a>
+                  </button>
+              </div>
+          </div>
+      </body>
+    </html>
+  `)
+});
 
 // export server instance
 export default server;
