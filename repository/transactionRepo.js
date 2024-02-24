@@ -2,7 +2,7 @@ import sequelize, {Op} from "sequelize";
 import transactionModel from "../models/transactionSchema.js";
 
 
-// Function to get the month index
+// month list array
 const monthsList = ["", 
     "January", 
     "February", 
@@ -18,7 +18,7 @@ const monthsList = ["",
     "December"
 ];
 
-
+// Function to get the month index
 export const getMonthIndex = (month) => {
     const index = monthsList.indexOf(month);
   
@@ -81,34 +81,27 @@ export const findSalesInMonth = async (targetMonth, search, offset, limit = 10) 
   };
 
 
+// Function to get statistics for a given month
+export const getStatisticsForMonth = async (targetMonth) => {
+  try {
+    const statistics = await transactionModel.findOne({
+      attributes: [
+        [sequelize.fn('SUM', sequelize.col('price')), 'totalSaleAmount'],
+        [sequelize.fn('COUNT', sequelize.literal('CASE WHEN isSold = 1 THEN 1 ELSE NULL END')), 'totalSoldItems'],
+        [sequelize.fn('COUNT', sequelize.literal('CASE WHEN isSold = 0 THEN 1 ELSE NULL END')), 'totalNotSoldItems'],
+      ],
+      where: {
+        [Op.and]: [
+          sequelize.where(
+            sequelize.fn("strftime", "%m", sequelize.col("dateOfSale")),
+            targetMonth
+          ),
+        ],
+      },
+    });
 
-
-
-
-
-
-
-
-// // Function to find sales in a given month
-// export const findSalesInMonth = async (targetMonth, offset, limit=10) => {
-//     try {
-//         let transactionsRow = await transactionModel.findAll({
-//             where: {
-//                 [Op.and]: [
-//                     sequelize.where(
-//                         sequelize.fn("strftime", "%m", sequelize.col("dateOfSale")),
-//                         targetMonth
-//                     ),
-//                 ],
-                
-//             },
-//             offset,
-//             limit,
-//         });
-
-//         // console.log(`Transactions in month ${targetMonth}:`, transactionsRow);
-//         return transactionsRow;
-//     } catch (error) {
-//         console.error(error);
-//     }
-// };
+    return statistics;
+  } catch (error) {
+    console.error(error);
+  }
+};

@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import Op from 'sequelize';
-import transactionModel from '../models/transactionSchema.js';
+import { getMonthIndex, getStatisticsForMonth } from '../repository/transactionRepo.js';
 
 const statisticsRouter = Router();
 
@@ -12,44 +11,15 @@ statisticsRouter.get('/', async (req, res) => {
     // Validate if month parameter is provided
     if (!month) {
       return res.status(400).json({ error: 'Month parameter is required' });
-    }
+    };
+    
+    // find the month index
+    const targetMonth = getMonthIndex(month);
 
-    // Calculate total sale amount
-    const totalSaleAmount = await transactionModel.sum('price', {
-      where: {
-        dateOfSale: {
-          [Op.between]: [new Date(`${month}-01`), new Date(`${month}-31`)],
-        },
-        isSold: true,
-      },
-    });
-
-    console.log("Total Sale amount: ", totalSaleAmount);
-    // Calculate total number of sold items
-    const totalSoldItems = await transactionModel.count({
-      where: {
-        dateOfSale: {
-          [Op.between]: [new Date(`${month}-01`), new Date(`${month}-31`)],
-        },
-        isSold: true,
-      },
-    });
-
-    // Calculate total number of not sold items
-    const totalNotSoldItems = await transactionModel.count({
-      where: {
-        dateOfSale: {
-          [Op.between]: [new Date(`${month}-01`), new Date(`${month}-31`)],
-        },
-        isSold: false,
-      },
-    });
-
-    res.status(200).json({
-      totalSaleAmount: totalSaleAmount || 0,
-      totalSoldItems: totalSoldItems || 0,
-      totalNotSoldItems: totalNotSoldItems || 0,
-    });
+    // based on the target month find statistics
+    const statistics = await getStatisticsForMonth(targetMonth);
+    
+    res.status(200).json({statistics});
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

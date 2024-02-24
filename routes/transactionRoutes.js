@@ -27,12 +27,12 @@ transactionRouter.get("/initialize", async (req, res) => {
     }));
 
     // Initialize the database with seed data
-    await Transaction.bulkCreate(seedData);
+    await transactionModel.bulkCreate(seedData);
 
     res.status(200).json({ message: "Database initialized successfully" });
   } catch (error) {
     // console.error(error);
-    res.status(500).json({ error: error });
+    res.status(500).json({ error: error.message });
   }
 });
 
