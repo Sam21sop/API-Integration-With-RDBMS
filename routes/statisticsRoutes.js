@@ -19,7 +19,7 @@ statisticsRouter.get('/', async (req, res) => {
     // based on the target month find statistics
     const statistics = await getStatisticsForMonth(targetMonth);
     
-    res.status(200).json({statistics});
+    res.status(200).json(statistics);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

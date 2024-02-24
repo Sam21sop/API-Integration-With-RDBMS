@@ -14,10 +14,10 @@ pieChartRouter.get('/', async (req, res) => {
 
     // Fetch unique categories and count of items from each category for the selected month
     const targetMonth = getMonthIndex(month);
-    console.log("Target month", targetMonth);
+
     const pieChartData = await getUniqueCategories(targetMonth);
-    console.log(pieChartData);
-    res.status(200).json({ pieChartData });
+
+    res.status(200).json( pieChartData );
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }

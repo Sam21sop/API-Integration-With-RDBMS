@@ -41,7 +41,7 @@ barChartRouter.get('/', async (req, res) => {
 
     const barChartData = await getBarChartData(targetMonth, priceRanges);
 
-    res.status(200).json({ barChartData });
+    res.status(200).json( barChartData );
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

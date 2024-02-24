@@ -1,6 +1,5 @@
 import { Router } from "express";
 import axios from "axios";
-import { Op } from "sequelize";
 import transactionModel from "../models/transactionSchema.js";
 import { findSalesInMonth, getMonthIndex } from "../repository/transactionRepo.js";
 const transactionRouter = Router();
@@ -53,10 +52,10 @@ transactionRouter.get('/', async (req, res) => {
       transactions = await findSalesInMonth(String(targetMonth), search, offset, limit);
     };
 
-    res.status(200).json({ transactions }); 
+    res.status(200).json(transactions); 
   }
   catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
