@@ -1,5 +1,4 @@
 import sequelize, {Op} from "sequelize";
-import sqlite3 from "sqlite3";
 import transactionModel from "../models/transactionSchema.js";
 
 
@@ -191,6 +190,34 @@ export const getBarChartData = async (targetMonth, priceRanges) => {
     });
 
     return barChartData;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+
+
+// Function to find unique categories and their count
+export const getUniqueCategories = async (targetMonth) => {
+  try {
+    const uniqueCategories = await transactionModel.findAll({
+      attributes: [
+        'category',
+        [sequelize.fn('COUNT', sequelize.col('*')), 'categoryCount'],
+      ],
+      where: {
+        [Op.and]: [
+          sequelize.where(
+            sequelize.fn("strftime", "%m", sequelize.col("dateOfSale")),
+            targetMonth
+          ),
+        ],
+      },
+      group: ['category'],
+    });
+
+    return uniqueCategories;
   } catch (error) {
     console.error(error);
     throw error;
