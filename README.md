@@ -19,11 +19,11 @@ This Node.js backend project involves creating APIs to interact with a relationa
 #### Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Sam21sop/BCCV2.git
+    git clone https://github.com/Sam21sop/Back-End-Challenge.git
 
 2. Navigate to the project directory:
     ```bash
-    cd BCCV2
+    cd Back-End-Challenge
 
 3. Install dependencies:
     ```bash
