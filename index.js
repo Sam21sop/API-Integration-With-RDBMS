@@ -29,7 +29,7 @@ server.get('/', (req, res)=>{
       <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Home</title>
+          <title>API Integration with RDBMS</title>
           <style>
               body{
                   margin-top: 5%;
@@ -52,6 +52,7 @@ server.get('/', (req, res)=>{
                       <a href="https://api-integration-with-rdbms.onrender.com/api/database/initialize" target="_blank">Initilize DataBase</a>
                   </button>
               </div>
+              <br>
               <div>
                   <button>
                       <a href="http://api-integration-with-rdbms.onrender.com/api/transactions?month=December" target="_blank">Get All Transaction</a>
