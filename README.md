@@ -1,4 +1,4 @@
-# BCCV2
+# API integration With RDBMS
 This Node.js backend project involves creating APIs to interact with a relational database, initialized with data fetched from a third-party API. The project includes functionalities such as listing transactions, providing statistics, generating bar and pie charts, and combining responses from multiple APIs.
 
 ## Technologies Used
@@ -19,7 +19,7 @@ This Node.js backend project involves creating APIs to interact with a relationa
 #### Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Sam21sop/Back-End-Challenge.git
+    git clone https://github.com/Sam21sop/API-Integration-With-RDBMS.git
 
 2. Navigate to the project directory:
     ```bash
