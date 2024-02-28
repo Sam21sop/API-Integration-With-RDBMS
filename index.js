@@ -12,7 +12,7 @@ server.use(express.json());
 
 // Sync the models with the database
 Database.sync().then(() => {
-  console.log('Database synced');
+//   console.log('Database synced');
 });
 
 // Use routes
@@ -49,31 +49,36 @@ server.get('/', (req, res)=>{
               <h1>Dashboard</h1>
               <div>
                   <button>
-                      <a href="http://localhost:8080/api/transactions?month=December" target="_blank">Get All Transaction</a>
+                      <a href="https://api-integration-with-rdbms.onrender.com/api/database/initialize" target="_blank">Initilize DataBase</a>
+                  </button>
+              </div>
+              <div>
+                  <button>
+                      <a href="http://api-integration-with-rdbms.onrender.com/api/transactions?month=December" target="_blank">Get All Transaction</a>
                   </button>
               </div>
               <br>
               <div>
                   <button>
-                      <a href="http://localhost:8080/api/statistics?month=March" target="_blank">Get Statistics</a>
+                      <a href="http://api-integration-with-rdbms.onrender.com/api/statistics?month=March" target="_blank">Get Statistics</a>
                   </button>
               </div>
               <br>
               <div>
                   <button>
-                      <a href="http://localhost:8080/api/bar-chart?month=March" target="_blank">Get Bar Chart Data</a>
+                      <a href="http://api-integration-with-rdbms.onrender.com/api/bar-chart?month=March" target="_blank">Get Bar Chart Data</a>
                   </button>
               </div>
               <br>
               <div>
                   <button>
-                      <a href="http://localhost:8080/api/pie-chart?month=March" target="_blank">Get Pie Chart Data</a>
+                      <a href="http://api-integration-with-rdbms.onrender.com/api/pie-chart?month=March" target="_blank">Get Pie Chart Data</a>
                   </button>
               </div>
               <br>
               <div>
                   <button>
-                      <a href="http://localhost:8080/api/combined-response?month=January" target="_blank">Get Combined Response</a>
+                      <a href="http://api-integration-with-rdbms.onrender.com/api/combined-response?month=January" target="_blank">Get Combined Response</a>
                   </button>
               </div>
           </div>

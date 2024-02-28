@@ -6,10 +6,10 @@ const PORT = processEnvVar.PORT;
 const combinedResponseRouter = Router();
 
 // URLs for the three APIs
-const transactionsApiUrl = `http://localhost:${PORT}/api/transactions`;
-const statisticsApiUrl = `http://localhost:${PORT}/api/statistics`;
-const barChartApiUrl = `http://localhost:${PORT}/api/bar-chart`;
-const pieChartApiUrl = `http://localhost:${PORT}/api/pie-chart`;
+const transactionsApiUrl = `http://api-integration-with-rdbms.onrender.com/api/transactions`;
+const statisticsApiUrl = `http://api-integration-with-rdbms.onrender.com/api/statistics`;
+const barChartApiUrl = `http://api-integration-with-rdbms.onrender.com/api/bar-chart`;
+const pieChartApiUrl = `http://api-integration-with-rdbms.onrender.com/api/pie-chart`;
 
 // API for combined response
 combinedResponseRouter.get(`/`, async (req, res) => {

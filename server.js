@@ -7,5 +7,5 @@ const PORT = processEnvVar.PORT;
 
 
 server.listen(PORT, ()=>{
-    console.log(`server is listening on http://localhost:${PORT}`);
+    console.log(`server is listening on http://api-integration-with-rdbms.onrender.com`);
 });
